@@ -1,0 +1,48 @@
+<div class="">
+
+    <div class="panels">
+
+      <div class="scrollable">
+         <table>
+           <tr>
+               <th>Tarea</th>
+               <th>Estatus</th>
+               <th>Fecha/Hora</th>
+           </tr>
+           <tr *ngFor="let procedimiento of procedimientos" 
+               [class.selected]="procedimiento === procedimientoSeleccionado"
+               (click)="onSelect(procedimiento)">
+                <td>{{procedimiento.titulo}}</td>
+                <td>{{procedimiento.resultado}}</td>
+                <td>{{procedimiento.fechaCreacion | date: 'dd/MM/yyyy hh:mm a' }}</td>
+             </tr>
+      
+         </table>
+       </div>
+
+    
+         <div class="panel"   *ngIf="procedimientoSeleccionado">
+            <p class="text1">{{procedimientoSeleccionado.titulo | uppercase | truncate:[500, '...'] }}</p>
+            <div class="container">
+               <div class="text2">Observaciones:</div>
+               <textarea class="panel1 card" [(ngModel)]="procedimientoSeleccionado.comentario" ></textarea>
+            </div>
+            <div class="text2">Estatus: </div>
+            <br>
+            <div class="button-done">
+               <input name="options" type="radio" id="a25" class="button button1" value="HECHO" [(ngModel)]="procedimientoSeleccionado.resultado"> <label for="a25" id="a25">Atendida</label>
+               <input name="options" type="radio" id="a26" class="button button2" value="NO_HECHO" [(ngModel)]="procedimientoSeleccionado.resultado"> <label for="a26" id="a26">No Atendida</label>
+            </div>
+            <br>
+            <div><img src="icono_enviar.png" alt=""/></div>
+            <br>
+            <div class="end-div">
+               <button class="button button2" (click)='actualizarProcedimiento()' style='float: left;'>Actualizar</button>
+               <button class="button button2" (click)='finalizarProcedimiento()' style='float: right;background-color: darkorange;'>Finalizar</button>
+
+            </div>
+       </div>
+    </div>
+    
+    
+</div>
