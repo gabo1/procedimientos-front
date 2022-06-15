@@ -35,13 +35,15 @@ export class ProcedimientoComponent implements OnInit {
 
     const object: Object = {
       idDispositivo: 5,
-      x: '-99.129044',
-      y: '19.376918',
       origen:  'CAMARA',
       descripcion: 'prueba',
       identificadorCamara: 1, /*  Identificador camara */
       uuidOrigen: 5,
-
+      x:"-99.100719",
+      y:"19.401210000000006",
+      identificador:10,
+      idUsuario: 108,
+      nombreUsuario:"EXTERNO" 
     }
 
     this.procedimientoService.requestTest(object).subscribe((res: any) => {

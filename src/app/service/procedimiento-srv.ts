@@ -16,7 +16,7 @@ export class ProcedimientoService {
   constructor(private http: HttpClient) { }
 
   public requestTest(data: Object): Observable<any> {
-    return this.http.post(`${this.globalUrl}/api/emergenciasExternas/eventoCamara`, data, { headers: this.headers });
+    return this.http.post(`${this.globalUrl}/api/emergenciasExternas/saveEventoExternoCamara`, data, { headers: this.headers });
   }
 
   buscarProcedimientoPorUsuarioAsignado(id: number): Observable<ProcedimientoPendiente[]> {  
