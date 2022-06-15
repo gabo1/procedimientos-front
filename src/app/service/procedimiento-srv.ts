@@ -6,8 +6,18 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ProcedimientoService {
+  public globalUrl: string = 'http://c5-amb-qa.promad.com.mx:9194';
   private baseUrl = '/api';
+
+  public headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
   constructor(private http: HttpClient) { }
+
+  public requestTest(data: Object): Observable<any> {
+    return this.http.post(`${this.globalUrl}/api/emergenciasExternas/eventoCamara`, data, { headers: this.headers });
+  }
 
   buscarProcedimientoPorUsuarioAsignado(id: number): Observable<ProcedimientoPendiente[]> {  
     return this.http.get<ProcedimientoPendiente[]>(`${this.baseUrl}/procedimiento/asignado/${id}`);  
